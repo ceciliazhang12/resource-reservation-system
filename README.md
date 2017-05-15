@@ -6,9 +6,9 @@ https://resource-reservation-167623.appspot.com/
 ### Github: 
 http://github.com:ceciliazhang12/resource-reservation-system
 
-This system has implemented all the functions required.
+### This system has implemented all the functions required.
 
-# Something you need to know:
+### Something you need to know:
 
 1. This system supports multiple users. User must log in his/her google account to utilize this system.
 
@@ -34,13 +34,13 @@ This system has implemented all the functions required.
 7. Reservation info are fully displayed at where reservation appears.
 	- resource name and user are linked its own info page as required
 	
-# extra credits
+### extra credits
 I impelmented extra requirement 1, 2, 5
 1. The resource's number of past reservations is displayed in resource info page.
 2. User can search resources by name.
 5. When reservations are made, an email confirmation would be sent from my email account (yz3847@nyu.edu) to the user.
 
-# code guide
+### code guide
 1. All the data model used in the system are listed in models.py
 
 2. main.py lists all requests handlers and functions to implement this system.
