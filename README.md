@@ -1,11 +1,12 @@
 # Resource Reservation System
 
-URL:
-Github:
+###URL: https://resource-reservation-167623.appspot.com/
+
+###Github: git@github.com:ceciliazhang12/resource-reservation-system.git
 
 This system has implemented all the functions required.
 
-Something you need to know:
+# Something you need to know:
 
 1. This system supports multiple users. User must log in his/her google account to utilize this system.
 
@@ -33,9 +34,9 @@ Something you need to know:
 	
 # extra credits
 I impelmented extra requirement 1, 2, 5
-1 - The resource's number of past reservations is displayed in resource info page.
-2 - User can search resources by name.
-5 - When reservations are made, an email confirmation would be sent from my email account (yz3847@nyu.edu) to the user.
+1. The resource's number of past reservations is displayed in resource info page.
+2. User can search resources by name.
+5. When reservations are made, an email confirmation would be sent from my email account (yz3847@nyu.edu) to the user.
 
 # code guide
 1. All the data model used in the system are listed in models.py
@@ -43,9 +44,3 @@ I impelmented extra requirement 1, 2, 5
 2. main.py lists all requests handlers and functions to implement this system.
 
 3. All html files are in folder `/templates`
-  
-
-A few things need to be mentioned here:
-1. Since Google App Engine store datetime object even for an column of TimeProperty,
-it's tricky to compare the start time of a resource with the start time of a reservation.
-There should be a better way to do this, but this app takes the time part of resource datetime and compare it with user input.
