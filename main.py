@@ -331,27 +331,27 @@ class ResourcesByTag(webapp2.RequestHandler):
 '''
   SearchResource Handler enables the function of searching existing resources by name
 '''         
-class SearchResource(webapp2.RequestHandler):
-    def get(self):
-        template_values = {}
-        template = JINJA_ENVIRONMENT.get_template('searchResource.html')
-        self.response.write(template.render(template_values))         
+# class SearchResource(webapp2.RequestHandler):
+#     def get(self):
+#         template_values = {}
+#         template = JINJA_ENVIRONMENT.get_template('searchResource.html')
+#         self.response.write(template.render(template_values))         
         
-    def post(self):
-        name = self.request.get('name').lower()
-        resources = Resource.query().order(-Resource.last_reservation_time).fetch()
-        results = []
-        for r in resources:
-            resource_name = r.name.strip().lower()
-            if name in resource_name:
-                results.append(r)
-        print resources
-        template_values = {
-            'name': name,
-            'resources': results,
-        }
-        template = JINJA_ENVIRONMENT.get_template('searchResource.html')
-        self.response.write(template.render(template_values))  
+#     def post(self):
+#         name = self.request.get('name').lower()
+#         resources = Resource.query().order(-Resource.last_reservation_time).fetch()
+#         results = []
+#         for r in resources:
+#             resource_name = r.name.strip().lower()
+#             if name in resource_name:
+#                 results.append(r)
+#         print resources
+#         template_values = {
+#             'name': name,
+#             'resources': results,
+#         }
+#         template = JINJA_ENVIRONMENT.get_template('searchResource.html')
+#         self.response.write(template.render(template_values))  
 
 # [START app]
 app = webapp2.WSGIApplication([
@@ -364,6 +364,5 @@ app = webapp2.WSGIApplication([
     ('/index.html', DeleteReservation),
     ('/tag.html', ResourcesByTag),
     ('/rss.html', GenerateRSS),
-    ('/searchResource.html', SearchResource),
     ], debug=True)
 # [END app]
