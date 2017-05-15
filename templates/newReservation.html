@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h2> Make a New Reservation Here: </h2>
+  <form action="/newReservation.html" method="post">
+   	{% if msg %}
+  	  <div class="alert">
+	  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+	  {{ msg }}
+	  </div>
+  	{% endif %}
+	<div>Availability Start Time: (HH:MM) <input type="text" class="input-block-level" name="available_start_time" required ></div>
+	<div>Duration: <input type="text" class="input-block-level" name="duration" required placeholder = "Enter duration in unit of minute"></div>
+	<div><input type="hidden" name="id" value="{{id}}"></div>
+	<div><input type="hidden" name="name" value="{{name}}"></div>
+	<div><input type="submit" class="btn btn-large btn-primary" value="Submit"></div>
+  </form>
+
+{% endblock %}

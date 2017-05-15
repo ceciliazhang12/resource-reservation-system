@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% autoescape true %}
+
+<html>
+  <body>
+  {{ header }}
+  <br>
+  {{ owner }}
+  <br>
+  {{ name }}
+  <br>
+  {{ start_time }}
+  <br>
+  {{ end_time }}
+  <br>
+  {% for reservation in reservations %}
+    {{ reservation["user"] }}
+    <br>
+    {{ reservation["start"] }}
+    <br>
+  {% endfor %}
+  </body>
+</html>
+{% endautoescape %}

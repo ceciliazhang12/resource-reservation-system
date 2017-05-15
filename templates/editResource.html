@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h2> Edit this resource: </h2>
+  <form action="/editResource.html" method="post">
+	<div>Resource Name: <input type="text" class="input-block-level" name="name" required placeholder="{{name}}" ></div>
+	<div>Availability Start Time: (HH:MM) <input type="text" class="input-block-level" name="available_start_time" required placeholder="{{available_start_time}}" ></div>
+	<div>Availability End Time: (HH:MM) <input type="text" class="input-block-level" name="available_end_time" required placeholder="{{available_end_time}}" ></div>
+	<div>Tags: (tag1, tag2, tag3,...) <input type="text" class="input-block-level" name="tags" placeholder="{{tags}}" ></div>
+	<div><input type="hidden" name="id" value="{{id}}"></div>
+	<div><input type="submit" class="btn btn-large btn-primary" value="Submit"></div>
+  </form>
+
+{% endblock %}

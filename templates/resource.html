@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <!-- [START displaying how many times this resource has been reserved in the past] -->
+	<h3>Count of past reservations in total: {{count}}</h3>
+  <!-- [END displaying how many times this resource has been reserved in the past] -->
+  
+  <hr>
+  
+  <!-- [START reservations for current resource] -->
+  <h3>All reservations for this resource:</h3>
+  {% if reservations %}
+    <table style="width:100%">
+      <tr>
+        <th>User</th>
+        <th>Resource Name</th>
+        <th>Reservation Start Time</th>
+        <th>Duration in minutes</th>
+      </tr>
+  	  {% for reservation in reservations %}
+	    <tr>
+	      <td>
+	      <a href="/user.html?email={{ reservation.user }}">{{ reservation.user }} </a>
+	      </td>
+	      <td>
+	      <a href="/resource.html?id={{ resource_id }}">{{ reservation.resource_name }} </a>
+	      <a href="/rss.html?id={{ resource_id }}"><img src="/images/rss.png" height="20" width="35"></a>
+	      </td>
+	      <td>{{ reservation.start_time }}</td>
+	      <td>{{ reservation.duration }}</td>
+	    </tr>
+	  {% endfor %}
+	</table>
+  {% else %}
+  <h3>No reservation for current resource</h3>
+  {% endif %}
+  <!-- [END reservations for current resource] -->
+  
+  <hr>
+  
+  <h3>Make a new reservation for this resource:</h3>
+  <a href="newReservation.html?id={{resource_id}}">Click here to make a new reservation </a>
+  
+  <hr>
+  
+  {% if curr_user.email() == owner %}
+	<a href="/editResource.html?id={{resource_id}}">Click here to edit this resource</a>
+  {% else %}
+  <h3 style="color:red;">You have no permission to edit this resource!</h3>
+  {% endif %}
+	
+{% endblock %}

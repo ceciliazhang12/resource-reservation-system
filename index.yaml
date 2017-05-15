@@ -1,0 +1,25 @@
+indexes:
+
+- kind: Reservation
+  ancestor: no
+  properties:
+  - name: user
+  - name: start_time
+  
+- kind: Reservation
+  ancestor: no
+  properties:
+  - name: user
+  - name: end_time
+
+- kind: Reservation
+  properties:
+  - name: resource_id
+  - name: end_time
+    direction: desc
+
+- kind: Resource
+  ancestor: no
+  properties:
+  - name: owner
+  - name: end_time

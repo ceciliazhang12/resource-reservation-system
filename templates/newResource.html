@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h2 align="center"> Add Your Resource Here: </h2>
+  <form action="/newResource.html" method="post">
+	<div>Resource Name: <input type="text" class="input-block-level" name="name" required ></div>
+	<div>Availability Start Time: (HH:MM) <input type="text" class="input-block-level" name="available_start_time" required ></div>
+	<div>Availability End Time: (HH:MM) <input type="text" class="input-block-level" name="available_end_time" required ></div>
+	<div>Tags: (tag1, tag2, tag3, ...) <input type="text" class="input-block-level" name="tags" ></div>
+	<div><input type="submit" class="btn btn-large btn-primary" value="Submit"></div>
+  </form>
+
+{% endblock %}

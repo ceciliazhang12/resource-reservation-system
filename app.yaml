@@ -1,0 +1,39 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+# [START bounce_service]
+# [START mail_service]
+inbound_services:
+- mail
+# [END mail_service]
+- mail_bounce
+# [END bounce_service]
+
+# [START handlers]
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /bootstrap
+  static_dir: bootstrap
+
+- url: /stylesheets
+  static_dir: stylesheets
+  
+- url: /images
+  static_dir: images
+
+- url: /.*
+  login: required
+  script: main.app
+# [END handlers]
+
+# [START libraries]
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
+# [END libraries]

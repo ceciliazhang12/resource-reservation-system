@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block content %}
+
+  
+  <!-- [START reservations by current user] -->
+  <br>
+  <h2>Your Reservations:</h2>
+  {% if reservation_by_curr_user %}
+    <table style="width:100%">
+      <tr>
+        <th>User</th>
+        <th>Resource Name</th>
+        <th>Reservation Start Time</th>
+        <th>Duration in minutes</th>
+        <th>Delete Reservation</th>
+      </tr>
+  	  	  {% for reservation in reservation_by_curr_user %}
+	    <tr>
+	      <td>
+	        <a href="/user.html?email={{ reservation.user }}">{{ reservation.user }} </a>
+	      </td>
+	      <td>
+	      <a href="/resource.html?id={{ reservation.resource_id }}">{{ reservation.resource_name }} </a>
+	      <a href="/rss.html?id={{ reservation.resource_id }}"><img src="/images/rss.png" height="20" width="35"></a>
+	      </td>
+	      <td>{{ reservation.start_time }}</td>
+	      <td>{{ reservation.duration }}</td>
+	      <td>
+	      <form action="/index.html?id={{ reservation.id }}" method="post">
+            <input type="hidden" name="reservation_id" value="{{ reservation.id }}">
+            <input type="submit" value="Delete">
+          </form>
+	      </td>
+	    </tr>
+	  {% endfor %}
+	</table>
+  {% else %}
+  <h3>No reservation by current user!</h3>
+  {% endif %}
+  <!-- [END reservations by current user] -->
+
+  <hr>
+
+  <!-- [START all resources in the system] -->
+  <h2>All Resources:</h2>
+  <table style="width:100%">
+    <tr>
+      <th>Resource Name</th>
+      <th>Avalibility Start Time</th>
+      <th>Avalibility End Time</th>
+      <th>Tags</th>
+    </tr>
+    {% for resource in sorted_resources %}
+	  <tr>
+	    <td>
+	      <a href="/resource.html?id={{ resource.id }}">{{ resource.name }} </a>
+	      <a href="/rss.html?id={{ resource.id }}"><img src="/images/rss.png" height="20" width="35"></a>
+	    </td>
+	    <td>{{ resource.available_start_time }}</td>
+	    <td>{{ resource.available_end_time }}</td>
+	    <td>
+	      {% if resource.tags %}
+	        {% for tag in resource.tags %}
+	          <a href="/tag.html?tag={{tag}}"><input type="submit" value="{{tag}}">
+	        {% endfor %}
+	      {% endif %}
+	    </td>
+	  </tr>
+	{% endfor %}
+  </table>
+  <!-- [END all resources in the system] -->
+
+  <hr>
+
+  <!-- [START resources owned by current user] -->
+  {% if resources_owned %}
+    <h2> Resources owned by current user: </h2>
+  	<table style="width:100%">
+    <tr>
+      <th>Resource Name</th>
+      <th>Avalibility Start Time</th>
+      <th>Avalibility End Time</th>
+    </tr>
+    {% for resource in resources_owned %}
+	  <tr>
+	    <td>
+	      <a href="/resource.html?id={{ resource.id }}">{{ resource.name }} </a>
+	      <a href="/rss.html?id={{ resource.id }}"><img src="/images/rss.png" height="20" width="35"></a>
+	    </td>
+	    <td>{{ resource.available_start_time }}</td>
+	    <td>{{ resource.available_end_time }}</td>
+	  </tr>
+	{% endfor %}
+  </table>
+  {% else %}
+    <h3> No Resources owned by current user! </h3>
+  {% endif %}
+  <!-- [END resources owned by current user] -->
+
+  <hr>
+
+  <!-- [link to create new resource] -->
+  <h2> Create a New Resource: </h2>
+  <a href="newResource.html">Click Here to Create a New Resource </a>
+  
+  <hr>
+  
+  <!-- [link to create new resource] -->
+  <h2> Search a Specific Resource: </h2>
+  <a href="searchResource.html">Click Here to Search a Specific Resource By Name </a>
+{% endblock %}
