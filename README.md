@@ -2,7 +2,7 @@
 
 ### URL: https://resource-reservation-167623.appspot.com/
 
-### Github: git@github.com:ceciliazhang12/resource-reservation-system
+### Github: http://github.com:ceciliazhang12/resource-reservation-system
 
 This system has implemented all the functions required.
 
